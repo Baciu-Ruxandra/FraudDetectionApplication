@@ -1,0 +1,20 @@
+[2025-11-12 13:45:10] INFO - Logging initialized. Writing to: logs/2025_11_12_13_45_10.log
+[2025-11-12 13:45:11] INFO - ConfigurationManager initialized successfully.
+[2025-11-12 13:45:11] INFO -  Starting training pipeline
+[2025-11-12 13:45:11] INFO - Starting data ingestion process...
+[2025-11-12 13:45:14] INFO - Train shape: (1296675, 23), Test shape: (555719, 23)
+[2025-11-12 13:45:14] INFO - Data ingestion completed successfully.
+[2025-11-12 13:45:14] INFO - Preprocessing dataset: creating time and age features.
+[2025-11-12 13:45:14] INFO - Preprocessing completed. Final shape: (1296675, 27)
+[2025-11-12 13:45:14] INFO - Starting model training...
+[2025-11-12 13:45:14] INFO - Building ColumnTransformer pipeline for numeric/categorical features.
+[2025-11-12 13:45:14] ERROR - 'ModelTrainerConfig' object has no attribute 'smote_ratio'
+Traceback (most recent call last):
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/pipeline/training_pipeline.py", line 38, in <module>
+    pipeline.main()
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/pipeline/training_pipeline.py", line 28, in main
+    model_trainer.train_and_save_model(df_train)
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/components/model_trainer.py", line 26, in train_and_save_model
+    smote = SMOTE(sampling_strategy=self.config.smote_ratio, random_state=self.config.random_state)
+                                    ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'ModelTrainerConfig' object has no attribute 'smote_ratio'

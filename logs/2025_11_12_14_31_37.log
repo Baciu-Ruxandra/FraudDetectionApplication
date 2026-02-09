@@ -1,0 +1,52 @@
+[2025-11-12 14:31:37] INFO - Logging initialized. Writing to: logs/2025_11_12_14_31_37.log
+[2025-11-12 14:31:37] INFO - >>> Starting Fraud Detection Training Pipeline <<<
+[2025-11-12 14:31:37] INFO - Initializing TrainingPipeline...
+[2025-11-12 14:31:37] INFO - ConfigurationManager initialized successfully.
+[2025-11-12 14:31:37] INFO - ConfigurationManager initialized successfully.
+[2025-11-12 14:31:37] INFO - 🚀 Starting training pipeline
+[2025-11-12 14:31:37] INFO - Starting data ingestion process...
+[2025-11-12 14:31:40] INFO - Train shape: (1296675, 23), Test shape: (555719, 23)
+[2025-11-12 14:31:40] INFO - Data ingestion completed successfully.
+[2025-11-12 14:31:40] INFO - Preprocessing dataset: creating time and age features.
+[2025-11-12 14:31:41] INFO - Preprocessing completed. Final shape: (1296675, 25)
+[2025-11-12 14:31:48] INFO - Preprocessed data saved to artifacts/preprocessing/train_preprocessed.csv
+[2025-11-12 14:31:48] INFO - Preprocessing dataset: creating time and age features.
+[2025-11-12 14:31:48] INFO - Preprocessing completed. Final shape: (555719, 25)
+[2025-11-12 14:31:51] INFO - Preprocessed data saved to artifacts/preprocessing/train_preprocessed.csv
+[2025-11-12 14:31:51] INFO - Starting model training...
+[2025-11-12 14:31:51] INFO - Evaluating base models with cross-validation...
+[2025-11-12 14:32:55] INFO - RF mean ROC-AUC: 0.9889
+[2025-11-12 14:32:55] INFO - XGB mean ROC-AUC: 0.9969
+[2025-11-12 14:34:35] INFO - OOF PR-AUC: 0.8311, ROC-AUC: 0.9960
+[2025-11-12 14:34:35] INFO - Chosen threshold: 0.6615 (target recall=0.95)
+[2025-11-12 14:35:12] INFO - Classification report:
+              precision    recall  f1-score   support
+
+           0      1.000     0.985     0.993   1289169
+           1      0.280     0.968     0.434      7506
+
+    accuracy                          0.985   1296675
+   macro avg      0.640     0.977     0.713   1296675
+weighted avg      0.996     0.985     0.989   1296675
+
+[2025-11-12 14:35:12] INFO - Confusion matrix:
+[[1270459   18710]
+ [    239    7267]]
+[2025-11-12 14:35:12] INFO - Model saved successfully at: artifacts/models/final_voting_model.pkl
+[2025-11-12 14:35:12] INFO - Starting model evaluation...
+[2025-11-12 14:35:13] INFO - ROC-AUC: 0.9960, PR-AUC: 0.7830
+[2025-11-12 14:35:13] INFO - Classification report:
+              precision    recall  f1-score   support
+
+           0      1.000     0.969     0.984    553574
+           1      0.109     0.985     0.196      2145
+
+    accuracy                          0.969    555719
+   macro avg      0.554     0.977     0.590    555719
+weighted avg      0.997     0.969     0.981    555719
+
+[2025-11-12 14:35:13] INFO - Confusion matrix:
+[[536291  17283]
+ [    32   2113]]
+[2025-11-12 14:35:13] INFO - Training pipeline completed successfully. Metrics: {'roc_auc': 0.9960271188983159, 'pr_auc': 0.7830008221614606}
+[2025-11-12 14:35:13] INFO - >>> Pipeline completed successfully <<<

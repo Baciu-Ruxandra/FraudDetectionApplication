@@ -1,0 +1,14 @@
+[2025-11-12 17:57:15] INFO - Logging initialized. Writing to: logs/2025_11_12_17_57_15.log
+[2025-11-12 17:57:15] INFO - ConfigurationManager initialized successfully.
+[2025-11-12 17:57:15] INFO - Loaded model from artifacts/models/final_voting_model.pkl
+[2025-11-12 17:57:15] WARNING -  * Debugger is active!
+[2025-11-12 17:57:15] INFO -  * Debugger PIN: 972-674-386
+[2025-11-12 17:57:18] INFO - 127.0.0.1 - - [12/Nov/2025 17:57:18] "GET / HTTP/1.1" 200 -
+[2025-11-12 17:57:18] INFO - 127.0.0.1 - - [12/Nov/2025 17:57:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+[2025-11-12 17:57:26] INFO - Uploaded file with 500 rows and 21 columns.
+[2025-11-12 17:57:26] INFO - Preprocessing dataset: creating time and age features.
+[2025-11-12 17:57:26] INFO - Preprocessing completed. Final shape: (500, 23)
+[2025-11-12 17:57:26] INFO - Preprocessed data saved to artifacts/preprocessing/train_preprocessed.csv
+[2025-11-12 17:57:26] INFO - Running prediction on 500 new samples.
+[2025-11-12 17:57:26] INFO - 127.0.0.1 - - [12/Nov/2025 17:57:26] "POST /upload HTTP/1.1" 200 -
+[2025-11-12 17:57:26] INFO - 127.0.0.1 - - [12/Nov/2025 17:57:26] "[36mGET /static/style.css HTTP/1.1[0m" 304 -

@@ -1,0 +1,7 @@
+[2025-11-12 16:43:13] INFO - Logging initialized. Writing to: logs/2025_11_12_16_43_13.log
+[2025-11-12 16:43:13] INFO - ConfigurationManager initialized successfully.
+[2025-11-12 16:43:16] INFO - Loaded model from artifacts/models/final_voting_model.pkl
+[2025-11-12 16:43:16] INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+[2025-11-12 16:43:16] INFO - [33mPress CTRL+C to quit[0m
+[2025-11-12 16:43:16] INFO -  * Restarting with stat

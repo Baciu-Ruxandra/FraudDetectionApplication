@@ -1,0 +1,4 @@
+[2025-11-12 14:57:03] INFO - Logging initialized. Writing to: logs/2025_11_12_14_57_03.log
+[2025-11-12 14:57:03] INFO - ConfigurationManager initialized successfully.
+[2025-11-12 14:57:05] INFO - Loaded model from artifacts/models/final_voting_model.pkl
+[2025-11-12 14:57:05] INFO - Running prediction pipeline for file: sample_input.csv

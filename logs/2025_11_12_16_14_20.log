@@ -1,0 +1,37 @@
+[2025-11-12 16:14:20] INFO - Logging initialized. Writing to: logs/2025_11_12_16_14_20.log
+[2025-11-12 16:14:20] INFO - ConfigurationManager initialized successfully.
+[2025-11-12 16:14:21] INFO - Loaded model from artifacts/models/final_voting_model.pkl
+[2025-11-12 16:14:21] WARNING -  * Debugger is active!
+[2025-11-12 16:14:21] INFO -  * Debugger PIN: 972-674-386
+[2025-11-12 16:14:24] INFO - 127.0.0.1 - - [12/Nov/2025 16:14:24] "GET / HTTP/1.1" 200 -
+[2025-11-12 16:14:28] INFO - Uploaded file with 500 rows and 23 columns.
+[2025-11-12 16:14:28] INFO - Running prediction pipeline for file: None
+[2025-11-12 16:14:28] ERROR - Invalid file path or buffer object type: <class 'NoneType'>
+Traceback (most recent call last):
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/app/app.py", line 34, in upload
+    results = predictor.predict(csv_path=None) if hasattr(predictor, "predict_df") else predictor.predict_df(df)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/pipeline/prediction_pipeline.py", line 20, in predict
+    df_new = pd.read_csv(csv_path)
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/.venv/lib/python3.12/site-packages/pandas/io/parsers/readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/.venv/lib/python3.12/site-packages/pandas/io/common.py", line 728, in get_handle
+    ioargs = _get_filepath_or_buffer(
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/.venv/lib/python3.12/site-packages/pandas/io/common.py", line 472, in _get_filepath_or_buffer
+    raise ValueError(msg)
+ValueError: Invalid file path or buffer object type: <class 'NoneType'>
+[2025-11-12 16:14:28] INFO - 127.0.0.1 - - [12/Nov/2025 16:14:28] "POST /upload HTTP/1.1" 200 -
+[2025-11-12 16:14:28] INFO - 127.0.0.1 - - [12/Nov/2025 16:14:28] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2025-11-12 16:16:19] INFO -  * Detected change in '/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/app/app.py', reloading

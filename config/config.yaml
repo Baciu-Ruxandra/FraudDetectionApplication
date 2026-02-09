@@ -1,0 +1,19 @@
+data_ingestion:
+  root_dir: /home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/data/raw
+  train_data_path: /home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/data/raw/fraudTrain.csv
+  test_data_path: /home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/data/raw/fraudTest.csv
+
+data_preprocessing:
+  root_dir: artifacts/preprocessing
+  preprocessed_train_path: artifacts/preprocessing/train_preprocessed.csv
+  preprocessed_test_path: artifacts/preprocessing/test_preprocessed.csv
+
+model_trainer:
+  root_dir: artifacts/models
+  model_path: artifacts/models/final_voting_model.pkl
+  threshold: 0.5
+  smote_ratio: 0.2
+  random_state: 42
+  n_estimators: 100
+  max_depth: 8
+  learning_rate: 0.05

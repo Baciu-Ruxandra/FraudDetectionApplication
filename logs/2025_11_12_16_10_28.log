@@ -1,0 +1,34 @@
+[2025-11-12 16:10:28] INFO - Logging initialized. Writing to: logs/2025_11_12_16_10_28.log
+[2025-11-12 16:10:28] INFO - ConfigurationManager initialized successfully.
+[2025-11-12 16:10:29] INFO - Loaded model from artifacts/models/final_voting_model.pkl
+[2025-11-12 16:10:29] WARNING -  * Debugger is active!
+[2025-11-12 16:10:29] INFO -  * Debugger PIN: 972-674-386
+[2025-11-12 16:10:31] INFO - 127.0.0.1 - - [12/Nov/2025 16:10:31] "GET / HTTP/1.1" 200 -
+[2025-11-12 16:10:36] INFO - Uploaded file with 500 rows and 23 columns.
+[2025-11-12 16:10:36] INFO - Running prediction pipeline on DataFrame input
+[2025-11-12 16:10:36] INFO - Preprocessing dataset: creating time and age features.
+[2025-11-12 16:10:36] INFO - Preprocessing completed. Final shape: (500, 25)
+[2025-11-12 16:10:36] INFO - Preprocessed data saved to artifacts/preprocessing/test_preprocessed.csv
+[2025-11-12 16:10:36] INFO - Running prediction on 500 new samples.
+[2025-11-12 16:10:36] ERROR - The truth value of a Index is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+Traceback (most recent call last):
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/app/app.py", line 49, in upload
+    return render_template(
+           ^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/.venv/lib/python3.12/site-packages/flask/templating.py", line 150, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/.venv/lib/python3.12/site-packages/flask/templating.py", line 131, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/.venv/lib/python3.12/site-packages/jinja2/environment.py", line 1295, in render
+    self.environment.handle_exception()
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/.venv/lib/python3.12/site-packages/jinja2/environment.py", line 942, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/app/templates/index.html", line 99, in top-level template code
+    {% if tables and columns %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/.venv/lib/python3.12/site-packages/pandas/core/indexes/base.py", line 3197, in __nonzero__
+    raise ValueError(
+ValueError: The truth value of a Index is ambiguous. Use a.empty, a.bool(), a.item(), a.any() or a.all().
+[2025-11-12 16:10:36] INFO - 127.0.0.1 - - [12/Nov/2025 16:10:36] "POST /upload HTTP/1.1" 200 -

@@ -1,0 +1,13 @@
+[2025-11-12 13:31:11] INFO - Logging initialized. Writing to: logs/2025_11_12_13_31_11.log
+[2025-11-12 13:31:12] ERROR - 'data_ingestion'
+Traceback (most recent call last):
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/pipeline/training_pipeline.py", line 37, in <module>
+    pipeline = TrainingPipeline()
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/pipeline/training_pipeline.py", line 11, in __init__
+    self.data_ingestion_config = self.config_manager.get_data_ingestion_config()
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/config/configuration.py", line 22, in get_data_ingestion_config
+    cfg = self.config["data_ingestion"]
+          ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'data_ingestion'

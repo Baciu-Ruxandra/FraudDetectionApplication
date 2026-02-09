@@ -1,0 +1,5 @@
+[2025-11-12 17:10:51] INFO - Logging initialized. Writing to: logs/2025_11_12_17_10_51.log
+[2025-11-12 17:10:51] INFO - ConfigurationManager initialized successfully.
+[2025-11-12 17:10:53] INFO - Loaded model from artifacts/models/final_voting_model.pkl
+[2025-11-12 17:10:53] WARNING -  * Debugger is active!
+[2025-11-12 17:10:53] INFO -  * Debugger PIN: 972-674-386

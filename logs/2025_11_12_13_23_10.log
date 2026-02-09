@@ -1,0 +1,13 @@
+[2025-11-12 13:23:10] INFO - Logging initialized. Writing to: logs/2025_11_12_13_23_10.log
+[2025-11-12 13:23:11] ERROR - DataIngestionConfig.__init__() missing 1 required positional argument: 'root_dir'
+Traceback (most recent call last):
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/pipeline/training_pipeline.py", line 37, in <module>
+    pipeline = TrainingPipeline()
+               ^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/pipeline/training_pipeline.py", line 11, in __init__
+    self.data_ingestion_config = self.config_manager.get_data_ingestion_config()
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/config/configuration.py", line 23, in get_data_ingestion_config
+    return DataIngestionConfig(
+           ^^^^^^^^^^^^^^^^^^^^
+TypeError: DataIngestionConfig.__init__() missing 1 required positional argument: 'root_dir'

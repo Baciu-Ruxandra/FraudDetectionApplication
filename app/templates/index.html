@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fraud Detection Dashboard</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.3.6/css/buttons.dataTables.min.css">
+
+  <!-- Your Custom Styles -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+  <!-- JS Libraries -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.3.6/js/dataTables.buttons.min.js"></script>
+  <script src="https://cdn.datatables.net/buttons/2.3.6/js/buttons.colVis.min.js"></script>
+</head>
+
+<body>
+<div class="container mt-5">
+
+  <div class="text-center mb-4">
+    <h2>💳 Fraud Detection Dashboard</h2>
+    <p class="text-muted">Upload a CSV file to analyze and flag suspicious transactions</p>
+  </div>
+
+  <!-- Upload Form -->
+  <form action="/upload" method="post" enctype="multipart/form-data" class="mb-4">
+    <div class="input-group">
+      <input type="file" name="file" accept=".csv" class="form-control" required>
+      <button type="submit" class="btn btn-primary">Upload & Analyze</button>
+    </div>
+  </form>
+
+  {% if summary %}
+  <div class="alert alert-info">
+    <h5>📊 Summary</h5>
+    <p>Total Transactions: <b>{{ summary.total }}</b><br>
+       Fraudulent: <b>{{ summary.high_count }}</b> ({{ summary.risk_pct }}%)</p>
+  </div>
+
+  <!-- Filter Controls -->
+  <div class="mb-3 d-flex justify-content-between align-items-center">
+    <div>
+      <label for="fraudFilter" class="form-label fw-bold">Filter by:</label>
+      <select id="fraudFilter" class="form-select form-select-sm" style="width:180px; display:inline-block;">
+        <option value="all">All Transactions</option>
+        <option value="fraud">Only Fraudulent</option>
+        <option value="legit">Only Legitimate</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- DataTable -->
+  <div class="table-responsive">
+    <table id="fraudTable" class="display nowrap table table-striped" style="width:100%">
+      <thead>
+        <tr>
+          {% for col in columns %}
+          <th>{{ col }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in tables %}
+        <tr class="{% if row['is_fraud_predicted'] == 1 %}table-danger{% endif %}">
+          {% for col in columns %}
+          <td>{{ row[col] }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% endif %}
+</div>
+
+{% if tables and columns %}
+<script>
+$(document).ready(function() {
+  var table = $('#fraudTable').DataTable({
+    pageLength: 10,
+    lengthMenu: [10, 25, 50, 100],
+    dom: 'Bfrtip',
+    buttons: [{
+      extend: 'colvis',
+      text: 'Toggle Columns',
+      className: 'btn btn-secondary',
+      collectionLayout: 'fixed two-column',
+      postfixButtons: ['colvisRestore'],
+
+      init: function(api, node, config) {
+        // Recolor buttons when menu opens or column is toggled
+        $(document).on('click', '.dt-button.buttons-colvis', function() {
+          setTimeout(updateColvisButtons, 100);
+        });
+        $(document).on('click', '.dt-button-collection button', function() {
+          setTimeout(updateColvisButtons, 100);
+        });
+
+        function updateColvisButtons() {
+          $('.dt-button-collection button').each(function() {
+            const $btn = $(this);
+            const isActive = $btn.hasClass('active');
+            const label = $btn.text().trim();
+            $btn.text(label); // keep column name visible
+          });
+        }
+      }
+    }],
+    scrollX: true,
+
+    // 🎨 Color-code the fraud_probability column
+    createdRow: function(row, data, dataIndex) {
+      {% if 'fraud_probability' in columns %}
+      var prob = parseFloat(data['fraud_probability']);
+      if (!isNaN(prob)) {
+        var cellIndex = {{ columns.index('fraud_probability') }};
+        var cell = $('td', row).eq(cellIndex);
+        if (prob >= 80) cell.css('background-color', '#f8d7da');     // red tint
+        else if (prob >= 50) cell.css('background-color', '#fff3cd'); // yellow
+        else cell.css('background-color', '#d1e7dd');                // green
+      }
+      {% endif %}
+    }
+  });
+
+  // 🔽 Fraud/Legit dropdown filter
+  $('#fraudFilter').on('change', function() {
+    var val = $(this).val();
+    {% if columns %}
+    var predCol = {{ columns.index('is_fraud_predicted') }};
+    {% else %}
+    var predCol = 0;
+    {% endif %}
+    if (val === 'fraud') {
+      table.column(predCol).search('1').draw();
+    } else if (val === 'legit') {
+      table.column(predCol).search('0').draw();
+    } else {
+      table.column(predCol).search('').draw();
+    }
+  });
+});
+</script>
+{% endif %}
+
+
+<footer class="text-center mt-5 mb-3 text-muted">
+  &copy; 2025 FraudShield AI | Built with Flask + DataTables
+</footer>
+</body>
+</html>

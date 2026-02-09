@@ -1,0 +1,14 @@
+[2025-11-12 15:24:13] INFO - Logging initialized. Writing to: logs/2025_11_12_15_24_13.log
+[2025-11-12 15:24:13] INFO - ConfigurationManager initialized successfully.
+[2025-11-12 15:24:14] INFO - Loaded model from artifacts/models/final_voting_model.pkl
+[2025-11-12 15:24:14] WARNING -  * Debugger is active!
+[2025-11-12 15:24:14] INFO -  * Debugger PIN: 972-674-386
+[2025-11-12 15:24:25] INFO - 127.0.0.1 - - [12/Nov/2025 15:24:25] "GET / HTTP/1.1" 200 -
+[2025-11-12 15:24:26] INFO - 127.0.0.1 - - [12/Nov/2025 15:24:26] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+[2025-11-12 15:24:41] INFO - Uploaded file with 500 rows and 23 columns.
+[2025-11-12 15:24:41] INFO - Running prediction pipeline on DataFrame input
+[2025-11-12 15:24:41] INFO - Preprocessing dataset: creating time and age features.
+[2025-11-12 15:24:41] INFO - Preprocessing completed. Final shape: (500, 25)
+[2025-11-12 15:24:41] INFO - Preprocessed data saved to artifacts/preprocessing/test_preprocessed.csv
+[2025-11-12 15:24:41] INFO - Running prediction on 500 new samples.
+[2025-11-12 15:24:41] INFO - 127.0.0.1 - - [12/Nov/2025 15:24:41] "POST /upload HTTP/1.1" 200 -

@@ -1,0 +1,26 @@
+[2025-11-12 14:11:32] INFO - Logging initialized. Writing to: logs/2025_11_12_14_11_32.log
+[2025-11-12 14:11:33] INFO - >>> Starting Fraud Detection Training Pipeline <<<
+[2025-11-12 14:11:33] INFO - Initializing TrainingPipeline...
+[2025-11-12 14:11:33] INFO - ConfigurationManager initialized successfully.
+[2025-11-12 14:11:33] INFO - ConfigurationManager initialized successfully.
+[2025-11-12 14:11:33] INFO - 🚀 Starting training pipeline
+[2025-11-12 14:11:33] INFO - Starting data ingestion process...
+[2025-11-12 14:11:36] INFO - Train shape: (1296675, 23), Test shape: (555719, 23)
+[2025-11-12 14:11:36] INFO - Data ingestion completed successfully.
+[2025-11-12 14:11:36] INFO - Preprocessing dataset: creating time and age features.
+[2025-11-12 14:11:36] INFO - Preprocessing completed. Final shape: (1296675, 25)
+[2025-11-12 14:11:43] INFO - Preprocessed data saved to artifacts/preprocessing/train_preprocessed.csv
+[2025-11-12 14:11:43] INFO - Preprocessing dataset: creating time and age features.
+[2025-11-12 14:11:43] INFO - Preprocessing completed. Final shape: (555719, 25)
+[2025-11-12 14:11:46] INFO - Preprocessed data saved to artifacts/preprocessing/train_preprocessed.csv
+[2025-11-12 14:11:46] ERROR - ModelTrainerConfig.__init__() got an unexpected keyword argument 'smote_ratio'
+Traceback (most recent call last):
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/pipeline/training_pipeline.py", line 43, in <module>
+    pipeline.main()
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/pipeline/training_pipeline.py", line 30, in main
+    trainer_config = self.config_manager.get_model_trainer_config()
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ruxandra/Desktop/Personal_Projects/fraud_detection_app/src/config/configuration.py", line 41, in get_model_trainer_config
+    return ModelTrainerConfig(
+           ^^^^^^^^^^^^^^^^^^^
+TypeError: ModelTrainerConfig.__init__() got an unexpected keyword argument 'smote_ratio'
